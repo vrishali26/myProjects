@@ -1,0 +1,35 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+	<meta charset="UTF-8" />
+	<title>canvas</title>
+	<style>
+		canvas{
+			border: 2px solid red;
+		}
+	</style>
+	<script>
+		var can1,ctx;
+		window.onload=function(){
+			can1=document.getElementById("can");
+			ctx=can1.getContext("2d");
+			ctx.strokeStyle="pink";
+			ctx.moveTo(40,40);
+			ctx.lineTo(140,40);
+			ctx.stroke();
+			ctx.moveTo(140,40);
+			ctx.lineTo(60,90);
+			ctx.stroke();
+			ctx.moveTo(60,90);
+			ctx.lineTo(90,10);
+			ctx.stroke();
+			ctx.moveTo(40,40);
+			ctx.lineTo(140,40);
+			ctx.stroke();
+		};
+	</script>
+	</head>
+	<body>
+		<canvas id="can" width="500" height="500"></canvas>
+	</body>
+</html>

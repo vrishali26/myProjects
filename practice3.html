@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<style>
+			#mainbox{
+				width: 200px;
+				height: 200px;
+				border: 2px solid black;
+				background-color: pink;
+			}
+		</style>
+		<script src="lib/AjaxFactory.js"></script>
+
+		<script type="text/javascript">
+		var xhr;
+		window.onload=function(){
+			document.getElementById("box").addEventListener("click",getdata);
+		};
+		function getdata()
+		{
+			xhr=AjaxFactory.create("get","practice1.txt",false);
+			xhr.onreadystatechange=function1;
+			xhr.send();
+		}
+			function function1()
+			{
+				if(xhr.readyState==4  && xhr.status==200){
+			  document.getElementById("mainbox").innerHTML+=xhr.responseText;
+			}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="box">click here</button>
+		<div id="mainbox"></div>
+	</body>
+</html>

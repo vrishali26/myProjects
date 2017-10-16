@@ -1,0 +1,45 @@
+<!DOCTYPE  HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>	
+	<head>
+		<meta content="text/html; charset=UTF-8" />
+		<script src="AjaxFactory.js"></script>
+		
+		<script type="text/javascript">
+		var xhr;
+		window.onload=function(){
+			if(document.addEventListener){
+			document.getElementById("box").addEventListener("click",getdata);
+		}
+		else{
+			document.getElementById("box").attachEvent("onclick",getdata);
+		}
+		};
+		function getdata(){
+			
+			xhr=AjaxFactory.create("get","heros.xml",true);
+			xhr.onreadystatechange=function1;
+			xhr.send();
+		}
+		function function1(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+		var abc=xhr.responseXML;
+		var s=abc.getElementsByTagName("hero");
+		//alert(s.length);
+		for(var i=0;i<s.length;i++){
+		
+			var hn=abc.getElementsByTagName("hTitle")[i].firstChild.nodeValue;
+			var hp=abc.getElementsByTagName("phone")[i].firstChild.nodeValue;
+			var hi=abc.getElementsByTagName("photo")[i].firstChild.nodeValue;
+			var hd=abc.getElementsByTagName("hDetails")[i].firstChild.nodeValue;
+			
+			document.getElementById("a").innerHTML+="<div style='width:400px; height:800px; margin:auto; background-color:pink; float:left;'><h1 style='width:300px; height:200px;float:left;textalign:center;'>"+hn+"</h1></br><h2 style='width:300px;height:200px;'>"+hp+"</h2><img src='"+hi+"'><div style='width:300px;height:100px;background-color:pink;'>'"+hd+"'</div>";
+		}
+		}}
+		</script>
+	</head>
+	<body>
+		<button id="box">click here</button>
+		<div id="a"></div>
+	</body>
+</html>
